@@ -1,0 +1,41 @@
+ <!DOCTYPE html>
+ <html lang="en">
+ <head>
+ 	<meta charset="UTF-8">
+ 	<title>user's page</title>
+    <link rel="stylesheet" href="/static/css/styles.css" type="text/css">
+ </head>
+ <body>
+ 	<div class="header">
+ 	 <ul class="header_links inline-block">
+ 		 	<li class="inline-block"><a href="/books/adds">Add Book and Review</a></li>
+ 		 	<li class="inline-block"><a href="/">Logout</a></li>
+ 		 </ul>
+ 		 <h3 class="inline-block">Welcome {{session['name']}} !</h3>
+ 		
+ 	</div>
+ 	<div class="left_box">
+ 		<h4>Recent Book Reviews:</h4>
+			<div class="review">
+			{% for book in book_review %}
+ 				<h4><a href="/books/{{book['books_id']}}">{{book['titles']}}</a></h4>
+ 				<div class="review_info">
+	 				<p class="block">Rating: {{book['rating']}}</p>
+	 				<div class="star"></div>
+	 				<p><a href="/users/{{book['users_id']}}">{{book['name']}}</a> says : {{book['review']}}</p>
+	 				<p>Posted on {{book['created_on'].strftime('%b %dst %Y')}}</p>
+ 				</div>
+ 			{% endfor %}	
+	
+			</div>	
+ 	</div>
+ 	<div class="right_box">
+ 	 		<h4>Other Books with Reviews:</h4>
+ 	 		{% for book in other_book %}
+ 	 		<div class="book_list">
+ 	 		<p><a href="/books/{{book['books_id']}}">{{book['titles']}}</a></p>
+ 			</div>
+ 	{% endfor %}
+ 	</div>
+ </body>
+ </html>

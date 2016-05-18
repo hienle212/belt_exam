@@ -1,0 +1,19 @@
+	.inline-block{
+		display:inline;
+		margin-left: 20px;
+	}
+	.header{
+		margin-left: 560px;
+	}
+	h1{
+		font-size: 18px;
+		font-family: none;
+	}
+	h2{
+		font-size: 18px;
+		font-family: none;
+		margin-top: 40px;
+	}
+	#body{
+		margin-left: 20px;
+	}

@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>User's Page</title>
+    <link rel="stylesheet" href="/static/css/styles2.css" type="text/css">
+
+</head>
+<body>
+ 	<div class="header">
+ 	 <ul class="header_links inline-block">
+ 	 		<li class = "inline-block"><a href="/books">Home</a></li>
+ 		 	<li class="inline-block"><a href="/books/add">Add Book and Review</a></li>
+ 		 	<li class="inline-block"><a href="/">Logout</a></li>
+ 		 </ul> 		
+ 	</div>
+ 	<div id="body">
+ 	{% for user in user_info %}
+ 	<h1>User Alias: {{user['alias']}} </h1>
+ 	<p>Name : {{user['name']}}</p>
+ 	<p>Email : {{user['email']}}</p>
+ 	<p>Total Review : {{user['count']}}</p>
+
+ 	<h2>Posted Reviews on the flowwoing books:</h2>
+ 		<p><a href="/books/{{user['books_id']}}">{{user['titles']}}</a></p>
+ 	{% endfor %}
+ 	</div>
+</body>
+</html>

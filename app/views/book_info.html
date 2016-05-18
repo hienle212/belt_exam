@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Book</title>
+    <link rel="stylesheet" href="/static/css/style3.css" type="text/css">
+<style type="text/css">
+	span{
+		margin-left: 460px;
+	}
+</style>
+</head>
+<body>
+ 	<ul class="header">
+ 		 	<li class="inline-block"><a href="/books">Home</a></li>
+ 		 	<li class="inline-block"><a href="/">Logout</a></li>
+ 	</ul> 		
+<div id="body">
+{% for book in books %}
+<h1>{{ book['titles']}}</h1>
+<p>Author : {{ book['author']}} </p>
+{% endfor %}
+
+<h2>Reviews:</h2>
+{% for book in books %}
+<div id="box">
+<p>Rating {{ book['rating']}}</p>
+	{% if book['users_id'] == session['id'] %}
+    	<p><a href="/users/{{book['users_id']}}">{{book['name']}} </a> says :{{ book['review']}}</p>
+ 		<span><a href="/remove/{{book['users_id']}}">Delete</a></span> 
+    	{% else %}
+		<p><a href="/users/{{book['users_id']}}">{{book['name']}} </a> says :{{ book['review']}}</p>
+    {% endif %}
+<p>Posted on {{ book['created_on'].strftime('%b %dst %Y %-I:%M%p') }} </p>
+{% endfor %}
+</div>
+</div>
+<div id="form">
+	<h3>Add a Review :</h3>
+
+	<form action="/books/add" method="POST">
+		<textarea name= "review"></textarea><br>
+		{% for book in books %}
+
+		<input type="hidden" name='book_id' value="{{ book['books_id']}}">
+		{% endfor %}
+
+		Rating : <input type="number" name="rating" min="1" max="5"> stars </input><br>
+		<input type="submit" value="Submit Reviews">
+	</form>
+
+</div>
+</body>
+</html>

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Books</title>
+	<style type="text/css">
+#review{
+	height:60px;
+	width:250px;
+}
+	.inline-block{
+		display:inline;
+		margin-left: 20px;
+	}
+	.header{
+		margin-left: 560px;
+	}
+</style>
+</head>
+<body>
+ 	<ul class="header">
+ 		 	<li class="inline-block"><a href="/books">Home</a></li>
+ 		 	<li class="inline-block"><a href="/">Logout</a></li>
+ 	</ul> 
+<div id="container">
+<h1>Add a New Book Title and a Review:</h1>
+<form action='/addbook' method='POST'>
+Book Title : <input type="text" name='title'><br>
+<label>Author :</label><br>
+Choose from the list: <select name='author'>
+  	<option >Stephen King</option>
+ 	 <option >Veronica Roth</option>
+ 	 <option >Disney</option>
+ 	 <option >Jessica</option>
+ 	 <option >Mitch Albom</option>
+ 	 <option >Mandino</option>
+</select><br>
+Or add a new author : <input type='text' name='author'><br>
+Review : <input id='review' type='text' name='review'><br>
+Rating : <input type="number" name="rating" min="1" max="5"> stars </input><br>
+<input type="submit" value="Add Book and Review">
+</form>
+</div>
+
+</body>
+</html>
